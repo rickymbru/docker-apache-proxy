@@ -1,7 +1,7 @@
 #Choose Debian
 FROM debian:latest
 
-MAINTAINER DiouxX "github@diouxx.be"
+LABEL maintainer="Ricky <rickymbru@gmail.com>"
 
 #Don't ask questions during install
 ENV DEBIAN_FRONTEND noninteractive
@@ -22,9 +22,11 @@ RUN a2enmod proxy \
 EXPOSE 80 443
 
 #Volumes
-VOLUME /opt/proxy-conf
+#VOLUME /opt/proxy-conf
 
 #Launch Apache2 on FOREGROUND
 COPY apache-proxy-start.sh /opt/
+RUN mkdir /opt/conf/
+COPY conf/* /opt/conf/
 RUN chmod +x /opt/apache-proxy-start.sh
 ENTRYPOINT ["/opt/apache-proxy-start.sh"]
