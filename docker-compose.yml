@@ -16,3 +16,11 @@ services: #Apache Proxy Container
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: always
+
+  nginx-teste:
+    container_name: 'nginx-teste'
+    image: 'nginx:latest'
+    ports:
+      - '8080:80'
+    volumes:
+      - ./html:/usr/share/nginx/html

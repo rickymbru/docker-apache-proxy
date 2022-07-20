@@ -28,5 +28,6 @@ EXPOSE 80 443
 COPY apache-proxy-start.sh /opt/
 RUN mkdir /opt/conf/
 COPY conf/* /opt/conf/
+RUN rm -rf /etc/apache2/sites-available/*
 RUN chmod +x /opt/apache-proxy-start.sh
 ENTRYPOINT ["/opt/apache-proxy-start.sh"]
